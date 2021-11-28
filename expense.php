@@ -64,10 +64,10 @@ function validate($expense)
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $expense = [
-        'date' => $_POST['date'],
-        'account' => $_POST['account'],
-        'text' => $_POST['text'],
-        'money' => $_POST['money'],
+        'date' => trim($_POST['date']),
+        'account' => trim($_POST['account']),
+        'text' => trim($_POST['text']),
+        'money' => trim($_POST['money']),
     ];
 
     $errors = validate($expense);

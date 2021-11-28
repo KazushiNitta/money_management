@@ -22,10 +22,10 @@
                 </tr>
                 <?php foreach ($incomes as $income) : ?>
                     <tr align="center">
-                        <td><?php echo escape($income['date']); ?></td>
-                        <td><?php echo escape($income['account']); ?></td>
-                        <td><?php echo escape($income['text']); ?></td>
-                        <td><?php echo escape($income['money']); ?></td>
+                        <td><?= escape($income['date']); ?></td>
+                        <td><?= escape($income['account']); ?></td>
+                        <td><?= nl2br(escape($income['text'])); ?></td>
+                        <td><?= escape($income['money']); ?></td>
                         <td><a href="">編集</a></td>
                         <td><a href="">削除</a></td>
                     </tr>
@@ -47,10 +47,10 @@
                 </tr>
                 <?php foreach ($expenses as $expense) : ?>
                     <tr align="center">
-                        <td><?php echo escape($expense['date']); ?></td>
-                        <td><?php echo escape($expense['account']); ?></td>
-                        <td><?php echo escape($expense['text']); ?></td>
-                        <td><?php echo escape($expense['money']); ?></td>
+                        <td><?= escape($expense['date']); ?></td>
+                        <td><?= escape($expense['account']); ?></td>
+                        <td><?= nl2br(escape($expense['text'])); ?></td>
+                        <td><?= escape($expense['money']); ?></td>
                         <td><a href="">編集</a></td>
                         <td><a href="">削除</a></td>
                     </tr>
