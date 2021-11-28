@@ -1,13 +1,19 @@
-<h1>家計簿アプリ</h1>
+<h2>一覧画面</h2>
 <a href="register_income.php">収入を登録する</a>
 <a href="register_expense.php">支出を登録する</a>
-<main>
+<main class="container">
     <section>
         <p>収入 - 支出 = 利益</p>
     </section>
-    <section>
+
+    <ul class="menu">
+        <li><a href="#" class="active" data-id="income">収入</a></li>
+        <li><a href="#" data-id="expense">支出</a></li>
+    </ul>
+
+    <section class="content active" id="income">
         <?php if (count($incomes) > 0) : ?>
-            <table border="1" width="90%" frame="void">
+            <table border="1" width="100%" frame="void">
                 <tr>
                     <th>日付</th>
                     <th>科目</th>
@@ -29,10 +35,10 @@
             <p>データがありません</p>
         <?php endif; ?>
     </section>
-    
-    <section>
+
+    <section class="content" id="expense">
         <?php if (count($expenses) > 0) : ?>
-            <table border="1" width="90%" frame="void">
+            <table border="1" width="100%" frame="void">
                 <tr>
                     <th>日付</th>
                     <th>科目</th>

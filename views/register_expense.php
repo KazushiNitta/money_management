@@ -1,4 +1,4 @@
-<h1>支出登録ページ</h1>
+<h2>支出登録ページ</h2>
 <form action="expense.php" method="POST">
     <?php if (count($errors)) : ?>
         <ul>
@@ -26,3 +26,4 @@
     </div>
     <button type="submit">登録する</button>
 </form>
+<a href="index.php">戻る</a>
