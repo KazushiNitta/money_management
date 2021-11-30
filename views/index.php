@@ -1,7 +1,7 @@
 <h2>収支一覧</h2>
-<a href="register_income.php">収入を登録する</a>
-<a href="register_expense.php">支出を登録する</a>
 <main class="container">
+    <a href="register_income.php">収入を登録する</a>
+    <a href="register_expense.php">支出を登録する</a>
     <section>
         <p>収入 - 支出 = 利益</p>
         <p><?= $sumIncome; ?> - <?= $sumExpense; ?> = <?= $profit; ?></p>
