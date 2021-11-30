@@ -3,10 +3,10 @@
 require_once __DIR__ . '/lib/escape.php';
 require_once __DIR__ . '/lib/mysqli.php';
 
-function listIncomes($link)
+function getIncomes($link)
 {
     $incomes = [];
-    $sql = 'SELECT date, account, text, money FROM income;';
+    $sql = 'SELECT date, account, text, money FROM income ORDER BY date ASC;';
     $result = mysqli_query($link, $sql);
 
     while ($income = mysqli_fetch_assoc($result)) {
@@ -17,7 +17,7 @@ function listIncomes($link)
     return $incomes;
 }
 
-function listExpense($link)
+function getExpense($link)
 {
     $expenses = [];
     $sql = 'SELECT date, account, text, money FROM expense;';
@@ -31,9 +31,30 @@ function listExpense($link)
     return $expenses;
 }
 
+function getSumIncome($link)
+{
+    $sql = 'SELECT SUM(money) FROM income;';
+    $result = mysqli_query($link, $sql);
+    $sumIncome = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return (int) $sumIncome['SUM(money)'];
+}
+
+function getSumExpense($link)
+{
+    $sql = 'SELECT SUM(money) FROM expense;';
+    $result = mysqli_query($link, $sql);
+    $sumExpense = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return (int) $sumExpense['SUM(money)'];
+}
+
 $link = dbConnect();
-$incomes = listIncomes($link);
-$expenses = listExpense($link);
+$incomes = getIncomes($link);
+$expenses = getExpense($link);
+$sumIncome = getSumIncome($link);
+$sumExpense = getSumExpense($link);
+$profit = $sumIncome - $sumExpense;
 
 $title = '家計簿アプリ';
 $content = __DIR__ . '/views/index.php';
