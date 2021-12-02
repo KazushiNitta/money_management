@@ -6,7 +6,7 @@ require_once __DIR__ . '/lib/mysqli.php';
 function getIncomes($link)
 {
     $incomes = [];
-    $sql = 'SELECT date, account, text, money FROM income ORDER BY date ASC;';
+    $sql = 'SELECT id, date, account, text, money FROM income ORDER BY date ASC;';
     $result = mysqli_query($link, $sql);
 
     while ($income = mysqli_fetch_assoc($result)) {
@@ -20,7 +20,7 @@ function getIncomes($link)
 function getExpense($link)
 {
     $expenses = [];
-    $sql = 'SELECT date, account, text, money FROM expense;';
+    $sql = 'SELECT id, date, account, text, money FROM expense;';
     $result = mysqli_query($link, $sql);
 
     while ($expense = mysqli_fetch_assoc($result)) {

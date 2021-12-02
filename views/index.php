@@ -27,7 +27,16 @@
                         <td><?= escape($income['account']); ?></td>
                         <td><?= nl2br(escape($income['text'])); ?></td>
                         <td><?= escape($income['money']); ?></td>
-                        <td><a href="">編集</a></td>
+                        <td>
+                            <form action="update_income.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $income['id']; ?>">
+                                <input type="hidden" name="date" value="<?= $income['date']; ?>">
+                                <input type="hidden" name="account" value="<?= $income['account']; ?>">
+                                <input type="hidden" name="text" value="<?= $income['text']; ?>">
+                                <input type="hidden" name="money" value="<?= $income['money']; ?>">
+                                <button type="submit">編集</button>
+                            </form>
+                        </td>
                         <td><a href="">削除</a></td>
                     </tr>
                 <?php endforeach; ?>
@@ -52,7 +61,16 @@
                         <td><?= escape($expense['account']); ?></td>
                         <td><?= nl2br(escape($expense['text'])); ?></td>
                         <td><?= escape($expense['money']); ?></td>
-                        <td><a href="">編集</a></td>
+                        <td>
+                            <form action="update_expense.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $expense['id']; ?>">
+                                <input type="hidden" name="date" value="<?= $expense['date']; ?>">
+                                <input type="hidden" name="account" value="<?= $expense['account']; ?>">
+                                <input type="hidden" name="text" value="<?= $expense['text']; ?>">
+                                <input type="hidden" name="money" value="<?= $expense['money']; ?>">
+                                <button type="submit">編集</button>
+                            </form>
+                        </td>
                         <td><a href="">削除</a></td>
                     </tr>
                 <?php endforeach; ?>
