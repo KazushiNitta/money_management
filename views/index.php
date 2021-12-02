@@ -3,8 +3,22 @@
     <a href="register_income.php">収入を登録する</a>
     <a href="register_expense.php">支出を登録する</a>
     <section>
-        <p>収入 - 支出 = 利益</p>
-        <p><?= $sumIncome; ?> - <?= $sumExpense; ?> = <?= $profit; ?></p>
+        <table>
+            <tr>
+                <th>収入</th>
+                <th>-</th>
+                <th>支出</th>
+                <th>=</th>
+                <th>利益</th>
+            </tr>
+            <tr>
+                <td><?= $sumIncome; ?></td>
+                <td>-</td>
+                <td><?= $sumExpense; ?></td>
+                <td>=</td>
+                <td><?= $profit; ?></td>
+            </tr>
+        </table>
     </section>
 
     <ul class="menu">
@@ -37,7 +51,12 @@
                                 <button type="submit">編集</button>
                             </form>
                         </td>
-                        <td><a href="">削除</a></td>
+                        <td>
+                            <form action="delete_income.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $income['id']; ?>">
+                                <button type="submit">削除</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
@@ -71,7 +90,12 @@
                                 <button type="submit">編集</button>
                             </form>
                         </td>
-                        <td><a href="">削除</a></td>
+                        <td>
+                            <form action="delete_expense.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $expense['id']; ?>">
+                                <button type="submit">削除</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
