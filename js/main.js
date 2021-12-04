@@ -19,4 +19,13 @@
       document.getElementById(clickedItem.dataset.id).classList.add('active');
     });
   });
+
+  const deletes = document.querySelectorAll('.delete');
+  deletes.forEach(span => {
+    span.addEventListener('click', () => {
+      if (confirm('本当に削除しますか？')) {
+        span.parentNode.submit();
+      }
+    });
+  });
 }

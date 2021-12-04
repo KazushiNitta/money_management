@@ -53,7 +53,7 @@ function validate($expense)
     }
 
     // 金額
-    if (!strlen($expense['money'])) {
+    if (!strlen($expense['money']) || ((int) $expense['money'] === 0)) {
         $errors['money'] = '金額を入力してください。';
     } elseif (!is_int((int) $expense['money'])) {
         $errors['money'] = '金額は半角数字で入力してください。';
@@ -79,4 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include 'views/register_expense.php';
+$title = '支出登録ページ';
+$content = __DIR__ . '/views/register_expense.php';
+include 'views/layout.php';

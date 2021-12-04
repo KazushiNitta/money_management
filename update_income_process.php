@@ -45,7 +45,7 @@ function validate($income)
     }
 
     // 金額
-    if (!strlen($income['money'])) {
+    if (!strlen($income['money']) || ((int) $income['money'] === 0)) {
         $errors['money'] = '金額を入力してください。';
     } elseif (!is_int((int) $income['money'])) {
         $errors['money'] = '金額は半角数字で入力してください。';
@@ -72,4 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include 'views/update_income.php';
+$title = '収入編集ページ';
+$content = __DIR__ . '/views/update_income.php';
+include 'views/layout.php';
