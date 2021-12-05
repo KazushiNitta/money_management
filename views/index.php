@@ -37,10 +37,10 @@
                 </tr>
                 <?php foreach ($incomes as $income) : ?>
                     <tr align="center">
-                        <td><?= escape($income['date']); ?></td>
-                        <td><?= escape($income['account']); ?></td>
-                        <td><?= nl2br(escape($income['text'])); ?></td>
-                        <td>¥<?= escape($income['money']); ?></td>
+                        <td><?= Utils::escape($income['date']); ?></td>
+                        <td><?= Utils::escape($income['account']); ?></td>
+                        <td><?= nl2br(Utils::escape($income['text'])); ?></td>
+                        <td>¥<?= Utils::escape($income['money']); ?></td>
                         <td width="100px">
                             <form action="update_income.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $income['id']; ?>">
@@ -76,10 +76,10 @@
                 </tr>
                 <?php foreach ($expenses as $expense) : ?>
                     <tr align="center">
-                        <td><?= escape($expense['date']); ?></td>
-                        <td><?= escape($expense['account']); ?></td>
-                        <td><?= nl2br(escape($expense['text'])); ?></td>
-                        <td>¥<?= escape($expense['money']); ?></td>
+                        <td><?= Utils::escape($expense['date']); ?></td>
+                        <td><?= Utils::escape($expense['account']); ?></td>
+                        <td><?= nl2br(Utils::escape($expense['text'])); ?></td>
+                        <td>¥<?= Utils::escape($expense['money']); ?></td>
                         <td width="100px">
                             <form action="update_expense.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $expense['id']; ?>">
