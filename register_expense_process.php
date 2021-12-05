@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/lib/Utils.php';
 require_once __DIR__ . '/lib/Database.php';
 
 function registerExpense($link, $expense)
@@ -24,44 +25,6 @@ function registerExpense($link, $expense)
     }
 }
 
-function validate($expense)
-{
-    $errors = [];
-
-    // 日付
-    $dates = explode("-", $expense['date']);
-    if (!strlen($expense['date'])) {
-        $errors['date'] = "日付を入力してください。";
-    } elseif (count($dates) !== 3) {
-        $errors['date'] = "正しい形式で日付を入力してください。";
-    } elseif (!checkdate($dates[1], $dates[2], $dates[0])) {
-        $errors['date'] = '正しい形式で日付を入力してください。';
-    }
-
-    // 科目
-    if (!strlen($expense['account'])) {
-        $errors['account'] = "科目を入力してください。";
-    } elseif (strlen($expense['account']) > 100) {
-        $errors['account'] = '科目は100文字以内で入力してください。';
-    }
-
-    // 摘要
-    if (!strlen($expense['text'])) {
-        $errors['text'] = "摘要を入力してください。";
-    } elseif (strlen($expense['text']) > 255) {
-        $errors['text'] = '科目は255文字以内で入力してください。';
-    }
-
-    // 金額
-    if (!strlen($expense['money']) || ((int) $expense['money'] === 0)) {
-        $errors['money'] = '金額を入力してください。';
-    } elseif (!is_int((int) $expense['money'])) {
-        $errors['money'] = '金額は半角数字で入力してください。';
-    }
-
-    return $errors;
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $expense = [
         'date' => trim($_POST['date']),
@@ -70,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'money' => trim($_POST['money']),
     ];
 
-    $errors = validate($expense);
+    $errors = Utils::validate($expense);
     if (!count($errors)) {
         $link = Database::Connect();
         registerExpense($link, $expense);

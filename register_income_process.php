@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/lib/Utils.php';
 require_once __DIR__ . '/lib/Database.php';
 
 function registerIncome($link, $income)
@@ -24,44 +25,6 @@ function registerIncome($link, $income)
     }
 }
 
-function validate($income)
-{
-    $errors = [];
-
-    // 日付
-    $dates = explode("-", $income['date']);
-    if (!strlen($income['date'])) {
-        $errors['date'] = '日付を入力してください。';
-    } elseif (count($dates) !== 3) {
-        $errors['date'] = '正しい形式で日付を入力してください。';
-    } elseif (!checkdate($dates[1], $dates[2], $dates[0])) {
-        $errors['date'] = '正しい形式で日付を入力してください。';
-    }
-
-    // 科目
-    if (!strlen($income['account'])) {
-        $errors['account'] = '科目を入力してください。';
-    } elseif (strlen($income['account']) > 100) {
-        $errors['account'] = '科目は100文字以内で入力してください。';
-    }
-
-    // 摘要
-    if (!strlen($income['text'])) {
-        $errors['text'] = '摘要を入力してください。';
-    } elseif (strlen($income['text']) > 255) {
-        $errors['text'] = '摘要は255文字以内で入力してください。';
-    }
-
-    // 金額
-    if (!strlen($income['money']) || ((int) $income['money'] === 0)) {
-        $errors['money'] = '金額を入力してください。';
-    } elseif (!is_int((int) $income['money'])) {
-        $errors['money'] = '金額は半角数字で入力してください。';
-    }
-
-    return $errors;
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $income = [
         'date' => trim($_POST['date']),
@@ -70,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'money' => trim($_POST['money']),
     ];
 
-    $errors = validate($income);
+    $errors = Utils::validate($income);
     if (!count($errors)) {
         $link = Database::Connect();
         registerIncome($link, $income);
