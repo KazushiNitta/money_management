@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/lib/mysqli.php';
+require_once __DIR__ . '/lib/Database.php';
 
 function deleteExpense($link, $expense)
 {
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'id' => trim($_POST['id']),
     ];
 
-    $link = dbConnect();
+    $link = Database::Connect();
     deleteExpense($link, $expense);
     mysqli_close($link);
     header("Location: index.php");

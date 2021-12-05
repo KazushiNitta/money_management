@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/lib/Utils.php';
-require_once __DIR__ . '/lib/mysqli.php';
+require_once __DIR__ . '/lib/Database.php';
 
 function getIncomes($link)
 {
@@ -49,7 +49,7 @@ function getSumExpense($link)
     return (int) $sumExpense['SUM(money)'];
 }
 
-$link = dbConnect();
+$link = Database::Connect();
 $incomes = getIncomes($link);
 $expenses = getExpense($link);
 $sumIncome = getSumIncome($link);

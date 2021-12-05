@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/lib/mysqli.php';
+require_once __DIR__ . '/lib/Database.php';
 
 function registerExpense($link, $expense)
 {
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = validate($expense);
     if (!count($errors)) {
-        $link = dbConnect();
+        $link = Database::Connect();
         registerExpense($link, $expense);
         mysqli_close($link);
         header("Location: index.php");
