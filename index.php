@@ -1,4 +1,5 @@
 <?php
+// index、テーブル作成処理をクラスにまとめる
 
 require_once __DIR__ . '/lib/Utils.php';
 require_once __DIR__ . '/lib/Database.php';

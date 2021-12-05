@@ -1,21 +1,7 @@
 <?php
 
 require_once __DIR__ . '/lib/Utils.php';
-require_once __DIR__ . '/lib/Database.php';
-
-function updateIncome($link, $income)
-{
-    $sql = <<<EOT
-    UPDATE income
-    SET date = "{$income['date']}", account = "{$income['account']}", text = "{$income['text']}", money = "{$income['money']}"
-    WHERE id = "{$income['id']}"
-    EOT;
-    $result = mysqli_query($link, $sql);
-    if (!$result) {
-        error_log('Error: fail to register income');
-        error_log('Debugging Error: ' . mysqli_error($link));
-    }
-}
+require_once __DIR__ . '/lib/Income.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $income = [
@@ -28,9 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = Utils::validate($income);
     if (!count($errors)) {
-        $link = Database::Connect();
-        updateIncome($link, $income);
-        mysqli_close($link);
+        Income::update($income);
         header("Location: index.php");
     }
 }

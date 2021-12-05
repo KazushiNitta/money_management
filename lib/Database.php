@@ -2,9 +2,10 @@
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-class Database {
+class Database
+{
 
-    public static function Connect()
+    public static function connect()
     {
         $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
         $dotenv->load();

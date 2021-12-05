@@ -1,24 +1,12 @@
 <?php
 
-require_once __DIR__ . '/lib/Database.php';
-
-function deleteIncome($link, $income)
-{
-    $sql = "DELETE FROM income WHERE id = {$income['id']};";
-    $result = mysqli_query($link, $sql);
-    if (!$result) {
-        error_log('Error: fail to register income');
-        error_log('Debugging Error: ' . mysqli_error($link));
-    }
-}
+require_once __DIR__ . '/lib/Income.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $income = [
         'id' => trim($_POST['id']),
     ];
 
-    $link = Database::Connect();
-    deleteIncome($link, $income);
-    mysqli_close($link);
+    Income::delete($income);
     header("Location: index.php");
 }
