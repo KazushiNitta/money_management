@@ -55,4 +55,31 @@ class Expense extends Database
         }
         mysqli_close($link);
     }
+
+    public static function get()
+    {
+        $expenses = [];
+        $sql = 'SELECT id, date, account, text, money FROM expense;';
+        $link = Expense::connect();
+        $result = mysqli_query($link, $sql);
+
+        while ($expense = mysqli_fetch_assoc($result)) {
+            $expenses[] = $expense;
+        }
+
+        mysqli_free_result($result);
+        mysqli_close($link);
+        return $expenses;
+    }
+
+    public static function getSum()
+    {
+        $sql = 'SELECT SUM(money) FROM expense;';
+        $link = Expense::connect();
+        $result = mysqli_query($link, $sql);
+        $sumExpense = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        mysqli_close($link);
+        return (int) $sumExpense['SUM(money)'];
+    }
 }

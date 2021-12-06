@@ -55,4 +55,31 @@ class Income extends Database
         }
         mysqli_close($link);
     }
+
+    public static function get()
+    {
+        $incomes = [];
+        $sql = 'SELECT id, date, account, text, money FROM income ORDER BY date ASC;';
+        $link = Income::connect();
+        $result = mysqli_query($link, $sql);
+
+        while ($income = mysqli_fetch_assoc($result)) {
+            $incomes[] = $income;
+        }
+
+        mysqli_free_result($result);
+        mysqli_close($link);
+        return $incomes;
+    }
+
+    public static function getSum()
+    {
+        $sql = 'SELECT SUM(money) FROM income;';
+        $link = Income::connect();
+        $result = mysqli_query($link, $sql);
+        $sumIncome = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        mysqli_close($link);
+        return (int) $sumIncome['SUM(money)'];
+    }
 }
