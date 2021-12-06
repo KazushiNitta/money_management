@@ -1,4 +1,4 @@
-<h2>収入登録ページ</h2>
+<h2 class="sub_title income">収入登録</h2>
 <form action="register_income_process.php" method="POST">
     <?php if (count($errors)) : ?>
         <ul>

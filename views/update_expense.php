@@ -1,4 +1,4 @@
-<h2>支出編集ページ</h2>
+<h2 class="sub_title expense">支出編集</h2>
 <form action="update_expense_process.php" method="POST">
     <?php if (count($errors)) : ?>
         <ul>

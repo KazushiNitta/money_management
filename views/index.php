@@ -1,15 +1,18 @@
-<h2>収支一覧</h2>
+<h2 class="sub_title profit">収支一覧</h2>
 <main class="container">
-    <a href="register_income.php">収入を登録する</a>
-    <a href="register_expense.php">支出を登録する</a>
-    <section>
+    <section class="register">
+        <a href="register_income.php" class="register_link bg_income">収入を登録する</a>
+        <a href="register_expense.php" class="register_link bg_expense">支出を登録する</a>
+    </section>
+
+    <section class="sum">
         <table>
             <tr>
-                <th>収入</th>
+                <th class="income">収入</th>
                 <th>-</th>
-                <th>支出</th>
+                <th class="expense">支出</th>
                 <th>=</th>
-                <th>収支</th>
+                <th class="profit">収支</th>
             </tr>
             <tr>
                 <td>¥<?= $sumIncome; ?></td>
@@ -22,18 +25,20 @@
     </section>
 
     <ul class="menu">
-        <li><a href="#" class="active" data-id="income">収入</a></li>
-        <li><a href="#" data-id="expense">支出</a></li>
+        <li><a href="#" class="active hover_income" data-id="income">収入</a></li>
+        <li><a href="#" class="hover_expense" data-id="expense">支出</a></li>
     </ul>
 
     <section class="content active" id="income">
         <?php if (count($incomes) > 0) : ?>
-            <table border="1" width="100%" frame="void">
-                <tr>
+            <table border="1" width="100%" frame="void" class="income_table">
+                <tr class="bg_income">
                     <th width="200px">日付</th>
                     <th width="200px">科目</th>
                     <th>摘要</th>
                     <th width="200px">金額</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <?php foreach ($incomes as $income) : ?>
                     <tr align="center">
@@ -61,18 +66,20 @@
                 <?php endforeach; ?>
             </table>
         <?php else : ?>
-            <p>データがありません</p>
+            <p>データが登録されていません</p>
         <?php endif; ?>
     </section>
 
     <section class="content" id="expense">
         <?php if (count($expenses) > 0) : ?>
-            <table border="1" width="100%" frame="void">
-                <tr>
+            <table border="1" width="100%" frame="void" class="expense_table">
+                <tr class="bg_expense">
                     <th width="200px">日付</th>
                     <th width="200px">科目</th>
                     <th>摘要</th>
                     <th width="200px">金額</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <?php foreach ($expenses as $expense) : ?>
                     <tr align="center">
@@ -100,7 +107,7 @@
                 <?php endforeach; ?>
             </table>
         <?php else : ?>
-            <p>データがありません</p>
+            <p>データが登録されていません</p>
         <?php endif; ?>
     </section>
 </main>

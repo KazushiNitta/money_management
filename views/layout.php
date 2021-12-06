@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1>家計簿アプリ</h1>
+        <h1 class="title">家計簿アプリ</h1>
     </header>
     <?php include $content; ?>
     <script src="js/main.js"></script>

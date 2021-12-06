@@ -1,4 +1,4 @@
-<h2>収入編集ページ</h2>
+<h2 class="sub_title income">収入編集</h2>
 <form action="update_income_process.php" method="POST">
     <?php if (count($errors)) : ?>
         <ul>
