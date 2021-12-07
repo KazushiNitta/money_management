@@ -25,13 +25,13 @@
     </section>
 
     <ul class="menu">
-        <li><a href="#" class="active hover_income" data-id="income">収入</a></li>
-        <li><a href="#" class="hover_expense" data-id="expense">支出</a></li>
+        <li class="hover_income"><a href="#" class="active" data-id="income">収入</a></li>
+        <li class="hover_expense"><a href="#" data-id="expense">支出</a></li>
     </ul>
 
     <section class="content active" id="income">
         <?php if (count($incomes) > 0) : ?>
-            <table border="1" width="100%" frame="void" class="income_table">
+            <table border="1" width="100%" class="income_table">
                 <tr class="bg_income">
                     <th width="200px">日付</th>
                     <th width="200px">科目</th>
@@ -72,7 +72,7 @@
 
     <section class="content" id="expense">
         <?php if (count($expenses) > 0) : ?>
-            <table border="1" width="100%" frame="void" class="expense_table">
+            <table border="1" width="100%" class="expense_table">
                 <tr class="bg_expense">
                     <th width="200px">日付</th>
                     <th width="200px">科目</th>

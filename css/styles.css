@@ -27,12 +27,16 @@ body {
 
 .title {
   padding-left: 35px;
+  padding-bottom: 8px;
+  border-bottom: solid 1px black;
+  margin: 10px 10px 20px;
 }
 
 .sub_title {
   width: 20%;
   text-align: center;
   margin: 0 auto 20px;
+  font-size: 28px;
 }
 
 /* index.phpのデザイン */
@@ -50,14 +54,18 @@ body {
   margin: 0 1%;
   font-size: 20px;
   color: black;
-  opacity: 0.7;
   text-decoration: none;
   border-radius: 8px;
 }
 
-.register_link:hover {
-  opacity: 1;
+.register .bg_income:hover {
   transition: 0.4s;
+  background-color: rgb(0, 150, 255);
+}
+
+.register .bg_expense:hover {
+  transition: 0.4s;
+  background-color: rgb(255, 50, 0);
 }
 
 .sum table {
@@ -67,7 +75,7 @@ body {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 0 10px;
 }
 
 .menu {
@@ -79,11 +87,24 @@ body {
 
 .menu li a {
   display: inline-block;
-  width: 100px;
+  width: 200px;
   text-align: center;
-  padding: 8px 0;
+  padding: 8px 1px;
+  margin-left: 1px;
   text-decoration: none;
   color: black;
+}
+
+.menu .hover_income .active {
+  background-color: rgb(100, 200, 255);
+}
+
+.menu .hover_expense {
+  margin-left: 1px;
+}
+
+.menu .hover_expense .active {
+  background-color: rgb(255, 100, 100);
 }
 
 .menu .hover_income:not(active):hover {
@@ -127,4 +148,55 @@ body {
 
 .expense_table tr:nth-child(odd) td {
   background-color: rgba(255, 100, 100, 0.4);
+}
+
+/* register.php、update.phpのデザイン */
+.form {
+  margin: 0 28px;
+  padding: 0 15px;
+}
+
+.part {
+  margin-bottom: 24px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.text {
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 70px;
+}
+
+.submit {
+  width: 100px;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.form .bg_income:hover {
+  transition: 0.4s;
+  background-color: rgb(0, 150, 255);
+}
+
+.form .bg_expense:hover {
+  transition: 0.4s;
+  background-color: rgb(255, 50, 0);
 }
